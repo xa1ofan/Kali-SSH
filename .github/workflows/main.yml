@@ -1,9 +1,9 @@
-
+ 
   name: "Kali Linux SSH"
   trigger_type: manual
   timeout_in: 120m
   container:
-      image: kalilinux/kali-rolling:latest
+      image: kali-rolling:latest
       cpu: 8
       memory: 64G
 
