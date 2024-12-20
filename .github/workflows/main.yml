@@ -6,16 +6,6 @@
       cpu: 8
       memory: 64G
 
-  Setup_script:
-      - apt update
-      - apt install sudo apt-utils -y sah
-      - DEBIAN_FRONTEND=noninteractive apt-get ssh vlc install -y --no-install-recommends tzdata
-      - ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
-      - apt-get install -y tzdata
-      - dpkg-reconfigure --frontend noninteractive tzdata
-      - sudo apt update -y && sudo apt install git aria2 curl wget tmate rsync zip unzip lzma cpio ccache neofetch openssh-server -y
-      - sudo apt install python2 -y
-      - sudo ln -sf /usr/bin/python3 /usr/bin/python
  with:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
         SSH_PASS: ${{ secrets.SSH_PASS }}
