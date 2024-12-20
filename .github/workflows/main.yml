@@ -29,9 +29,9 @@
   Spam_script:
       - bash spam.sh
 env:
-  TZ: Asia/Kolkata
-  GIT_USERNAME: Sushrut1101
-  GIT_EMAIL: guptasushrut@gmail.com
+  TZ: US
+  GIT_USERNAME: danieldurnea
+  GIT_EMAIL: danieldurnearoot@@gmail.com
 
 task:
   name: "Kali Linux SSH"
