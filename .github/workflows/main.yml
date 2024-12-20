@@ -16,7 +16,7 @@
       - dpkg-reconfigure --frontend noninteractive tzdata
       - sudo apt update -y && sudo apt install git aria2 curl wget tmate rsync zip unzip lzma cpio ccache neofetch openssh-server -y
       - sudo apt install python2 -y
-      - sudo ln -sf /usr/bin/python2 /usr/bin/python
+      - sudo ln -sf /usr/bin/python3 /usr/bin/python
  with:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
         SSH_PASS: ${{ secrets.SSH_PASS }}
