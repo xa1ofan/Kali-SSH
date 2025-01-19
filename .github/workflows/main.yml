@@ -1,19 +1,33 @@
-  name: "Kali Linux SSH"
-  trigger_type: manual
-  timeout_in: 120m
-  container:
-      image: kali-rolling:latest
-      cpu: 8
-      memory: 64G
+name: "Kali Linux SSH"
 
- with:
-        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-        SSH_PASS: ${{ secrets.SSH_PASS }}
-        NGROK_TIMEOUT: 25001
-      
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
 
-  Tmate_script:
-      - bash tmate.sh
+jobs:
+  kali-ssh:
+    runs-on: ubuntu-latest # The host runner GitHub uses to run your jobs
+    timeout-minutes: 120 # Sets the timeout to 120 minutes
 
-  Spam_script:
-      - bash spam.sh
+    container:
+      image: kali-rolling:latest # Use Kali Linux as the container image
+      options: --cpus 8 --memory 64g # Allocate resources for the container
+
+    env:
+      NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }} # Pass secret for ngrok auth
+      SSH_PASS: ${{ secrets.SSH_PASS }} # Pass secret for SSH password
+      NGROK_TIMEOUT: 25001 # Set ngrok timeout
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3 # Check out the repository
+
+    - name: Set up tmate (Optional for debugging)
+      uses: mxschmitt/action-tmate@v3 # Optional step for debugging via SSH
+
+    - name: Run Tmate Script
+      run: |
+        bash tmate.sh
+
+    - name: Run Spam Script
+      run: |
+        bash spam.sh
