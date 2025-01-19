@@ -10,7 +10,7 @@ jobs:
 
     container:
       image: kalilinux/kali-rolling:latest # Correct image name
-      options: --cpus 8 --memory 64g # Allocate resources for the container
+      options: --cpus 4 --memory 8g # Updated resource allocation to fit the limits
 
     env:
       NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }} # Pass secret for ngrok auth
