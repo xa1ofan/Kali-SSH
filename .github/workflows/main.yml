@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 120 # Sets the timeout to 120 minutes
 
     container:
-      image: kali-rolling:latest # Use Kali Linux as the container image
+      image: kalilinux/kali-rolling:latest # Correct image name
       options: --cpus 8 --memory 64g # Allocate resources for the container
 
     env:
